@@ -1,0 +1,26 @@
+version: '3'
+services:
+  mysqlsamuel:
+    image: mysql:latest
+    ports:
+      - 3307:3306
+    environment:
+      MYSQL_USER: dbuser
+      MYSQL_PASSWORD: dbpassword
+      MYSQL_ROOT_PASSWORD: dbpassword
+      MYSQL_DATABASE: uaa
+    networks:
+      - samuel
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 9090:8080
+    networks:
+      - samuel
+
+networks:
+  samuel:
+    external:
+      name: samuel
