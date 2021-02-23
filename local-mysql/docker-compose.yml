@@ -10,17 +10,17 @@ services:
       MYSQL_ROOT_PASSWORD: dbpassword
       MYSQL_DATABASE: uaa
     networks:
-      - samuel
+      - uaa-net
 
-  adminer:
+  admineruaa:
     image: adminer
     restart: always
     ports:
-      - 9090:8080
+      - 9091:8080
     networks:
-      - samuel
+      - uaa-net
 
 networks:
-  samuel:
-    external:
-      name: samuel
+  uaa-net:
+    driver: bridge
+
